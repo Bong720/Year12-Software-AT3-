@@ -44,3 +44,21 @@ y_pred = model.predict(X_test)
 # TODO 7: Calculate the RMSE (Root Mean Squared Error) by comparing your predictions against the real y_test values. Print the result.
 rmse = root_mean_squared_error(y_test, y_pred)
 print("RMSE:", rmse)
+
+print("--- Extracting the Formula ---")
+
+# TODO 1: Extract the weight using your_model.coef_[0] and the bias using your_model.intercept_
+weight = model.coef_[0]
+bias = model.intercept_
+# TODO 2: Print out the final formula using those two numbers.
+print(f"Formula: y = {weight:.2f}x + {bias:.2f}")
+# TODO 3: Use plt.scatter() to plot the X1_test data against the y_test data. Make the dots blue.
+plt.scatter(X_test, y_test, color="blue")
+# TODO 4: Use plt.plot() to draw a line mapping X1_test against your AI's predictions. Make the line red.
+y_predictions = model.predict(X_test)
+plt.plot(X_test, y_predictions, color="red")
+# TODO 5: Add a title, xlabel, ylabel, and plt.show() to display the graph.
+plt.title("Linear Regression Predictions")
+plt.xlabel("X1_test")
+plt.ylabel("y_test")
+plt.show()
