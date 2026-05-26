@@ -86,3 +86,27 @@ y_predictions = my_ai.predict(X1_test)
 
 rmse = np.sqrt(mean_squared_error(y_test, y_predictions))
 print("RMSE:", rmse)
+
+print("--- Training Level 2 AI (Multi-Subject) ---")
+
+# TODO 1: Create a new variable X2 that extracts BOTH 'Maths_Advanced' and 'Physics' from df_clean.
+X2 = df_clean[['Maths_Advanced', 'Physics']].values
+# TODO 2: Run train_test_split() again, this time using X2 and y.
+X2_train, X2_test, y_train, y_test = train_test_split(
+    X2, y, test_size=0.2, random_state=42
+)
+# TODO 3: Initialize a StandardScaler()
+scaler = StandardScaler()
+# TODO 4: Use .fit_transform() to scale your X2_train data.
+X2_train_scaled = scaler.fit_transform(X2_train)
+# TODO 5: Use ONLY .transform() to scale your X2_test data. (Do not fit on test data!)
+X2_test_scaled = scaler.transform(X2_test)
+# TODO 6: Create a new MarkPredictor() object.
+my_ai_level2 = MarkPredictor()
+# TODO 7: Train it on the scaled X2_train data.
+my_ai_level2.fit(X2_train_scaled, y_train)
+# TODO 8: Predict on the scaled X2_test data and print the final Level 2 RMSE.
+y_predictions = my_ai_level2.predict(X2_test_scaled)
+
+rmse = np.sqrt(mean_squared_error(y_test, y_predictions))
+print("Level 2 RMSE:", rmse)
