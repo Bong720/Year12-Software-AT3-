@@ -62,3 +62,27 @@ plt.title("Linear Regression Predictions")
 plt.xlabel("X1_test")
 plt.ylabel("y_test")
 plt.show()
+
+print("--- Training OOP Engine ---")
+
+# TODO 1: Write a class called MarkPredictor.
+class MarkPredictor:
+# TODO 2: Create an __init__(self) function that initializes self.model = LinearRegression()
+    def __init__(self):
+        self.model = LinearRegression()
+# TODO 3: Create a fit(self, X, y) function that calls self.model.fit(X, y)
+    def fit(self, X, y):
+        self.model.fit(X, y)
+# TODO 4: Create a predict(self, X) function that returns self.model.predict(X)
+    def predict(self, X):
+        return self.model.predict(X)
+# TODO 5: Outside the class, create an instance called my_ai = MarkPredictor()
+my_ai = MarkPredictor()
+
+# TODO 6: Train your my_ai object using your X1_train data.
+my_ai.fit(X1_train, y_train)
+# TODO 7: Generate predictions and print the new RMSE to prove your object works.
+y_predictions = my_ai.predict(X_test)
+
+rmse = np.sqrt(mean_squared_error(y_test, y_predictions))
+print("RMSE:", rmse)
