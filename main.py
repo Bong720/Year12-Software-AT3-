@@ -32,15 +32,15 @@ X1 = df_clean[['Maths_Advanced']].values
 # TODO 2: Create a variable y and set it to df_clean['Software_Engineering_Final'].values
 y = df_clean['Software_Engineering_Final'].values
 # TODO 3: Use the train_test_split() function to divide X1 and y. Set test_size=0.2 and random_state=42.
-X_train, X_test, y_train, y_test = train_test_split(
+X1_train, X1_test, y_train, y_test = train_test_split(
     X1, y, test_size=0.2, random_state=42
 )
 # TODO 4: Initialize a LinearRegression() model.
 model = LinearRegression()
 # TODO 5: .fit() your model using the training data only.
-model.fit(X_train, y_train)
+model.fit(X1_train, y_train)
 # TODO 6: Use your model to .predict() the outcomes for your test data.
-y_pred = model.predict(X_test)
+y_pred = model.predict(X1_test)
 # TODO 7: Calculate the RMSE (Root Mean Squared Error) by comparing your predictions against the real y_test values. Print the result.
 rmse = root_mean_squared_error(y_test, y_pred)
 print("RMSE:", rmse)
@@ -53,10 +53,10 @@ bias = model.intercept_
 # TODO 2: Print out the final formula using those two numbers.
 print(f"Formula: y = {weight:.2f}x + {bias:.2f}")
 # TODO 3: Use plt.scatter() to plot the X1_test data against the y_test data. Make the dots blue.
-plt.scatter(X_test, y_test, color="blue")
+plt.scatter(X1_test, y_test, color="blue")
 # TODO 4: Use plt.plot() to draw a line mapping X1_test against your AI's predictions. Make the line red.
-y_predictions = model.predict(X_test)
-plt.plot(X_test, y_predictions, color="red")
+y_predictions = model.predict(X1_test)
+plt.plot(X1_test, y_predictions, color="red")
 # TODO 5: Add a title, xlabel, ylabel, and plt.show() to display the graph.
 plt.title("Linear Regression Predictions")
 plt.xlabel("X1_test")
@@ -82,7 +82,7 @@ my_ai = MarkPredictor()
 # TODO 6: Train your my_ai object using your X1_train data.
 my_ai.fit(X1_train, y_train)
 # TODO 7: Generate predictions and print the new RMSE to prove your object works.
-y_predictions = my_ai.predict(X_test)
+y_predictions = my_ai.predict(X1_test)
 
 rmse = np.sqrt(mean_squared_error(y_test, y_predictions))
 print("RMSE:", rmse)
