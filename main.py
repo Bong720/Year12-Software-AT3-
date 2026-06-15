@@ -85,3 +85,16 @@ if disparate_impact_ratio < 0.8:
     print("WARNING: Potential bias detected.")
 else:
     print("Audit passed: No bias detected under the 80% rule.")
+
+print("--- Cross-Validation Check ---")
+scaler = StandardScaler()
+X2_scaled = scaler.fit_transform(X2)
+cv_scores = cross_val_score(
+    LinearRegression(),
+    X2_scaled,
+    y,
+    cv=5,
+    scoring='neg_root_mean_squared_error'
+)
+cv_rmse = -cv_scores.mean()
+print("Cross-Validation RMSE:", cv_rmse)
