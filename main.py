@@ -98,3 +98,14 @@ cv_scores = cross_val_score(
 )
 cv_rmse = -cv_scores.mean()
 print("Cross-Validation RMSE:", cv_rmse)
+
+print("--- Logic Gatekeeper ---")
+def check_data_reliability(attendance_percentage):
+    if attendance_percentage < 50.0:
+        print("ACCESS DENIED")
+        return False
+    else:
+        print("ACCESS GRANTED")
+        return True
+check_data_reliability(45)
+check_data_reliability(92)
