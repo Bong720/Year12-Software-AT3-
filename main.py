@@ -6,7 +6,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import root_mean_squared_error
-
+from sklearn.neural_network import MLPRegressor
 
 print("--- Loading and Cleaning Data ---")
 df_raw = pd.read_csv("master_markbook.csv", encoding='latin-1')
@@ -109,3 +109,20 @@ def check_data_reliability(attendance_percentage):
         return True
 check_data_reliability(45)
 check_data_reliability(92)
+
+print("--- Extension: Neural Network Test ---")
+nn_model = MLPRegressor(
+    hidden_layer_sizes=(16, 8),
+    max_iter=1500,
+    random_state=42
+)
+nn_model.fit(X2_train_scaled, y_train)
+nn_predictions = nn_model.predict(X2_test_scaled)
+nn_rmse = np.sqrt(mean_squared_error(y_test, nn_predictions))
+print("Level 2 Linear RMSE:", rmse)
+print("Neutral Network RMSE:", nn_rmse)
+
+if nn_rmse < rmse:
+    print("Winner: Neutral Networ,")
+else:
+    print("Winner: Linear Regression")
