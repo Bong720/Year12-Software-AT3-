@@ -123,7 +123,7 @@ print("Level 2 Linear RMSE:", rmse)
 print("Neutral Network RMSE:", nn_rmse)
 
 print("--- Predict Missing Mark for New Student ---")
-new_student = np.array([[80, 82]])  # Maths, Physics
+new_student = np.array([[80, 82]])
 new_student_scaled = scaler_level2.transform(new_student)
 predicted_mark = my_ai_level2.model.predict(new_student_scaled)
-print("Predicted Software Engineering Final Mark:", predicted_mark[0])
+print("Predicted Physics Final Mark:", predicted_mark[0])
