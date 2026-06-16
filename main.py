@@ -62,9 +62,9 @@ X2 = df_clean[['Maths_Advanced', 'Physics']].values
 X2_train, X2_test, y_train, y_test = train_test_split(
     X2, y, test_size=0.2, random_state=42
 )
-scaler = StandardScaler()
-X2_train_scaled = scaler.fit_transform(X2_train)
-X2_test_scaled = scaler.transform(X2_test)
+scaler_level2 = StandardScaler()
+X2_train_scaled = scaler_level2.fit_transform(X2_train)
+X2_test_scaled = scaler_level2.transform(X2_test)
 my_ai_level2 = MarkPredictor()
 my_ai_level2.fit(X2_train_scaled, y_train)
 y_predictions = my_ai_level2.predict(X2_test_scaled)
@@ -122,7 +122,8 @@ nn_rmse = np.sqrt(mean_squared_error(y_test, nn_predictions))
 print("Level 2 Linear RMSE:", rmse)
 print("Neutral Network RMSE:", nn_rmse)
 
-if nn_rmse < rmse:
-    print("Winner: Neutral Networ,")
-else:
-    print("Winner: Linear Regression")
+print("--- Predict Missing Mark for New Student ---")
+new_student = np.array([[80, 82]])  # Maths, Physics
+new_student_scaled = scaler_level2.transform(new_student)
+predicted_mark = my_ai_level2.model.predict(new_student_scaled)
+print("Predicted Software Engineering Final Mark:", predicted_mark[0])
