@@ -96,6 +96,14 @@ cv_scores = cross_val_score(
     cv=5,
     scoring='neg_root_mean_squared_error'
 )
+fold_rmses = -cv_scores
+
+print("Fold 1 RMSE:", fold_rmses[0])
+print("Fold 2 RMSE:", fold_rmses[1])
+print("Fold 3 RMSE:", fold_rmses[2])
+print("Fold 4 RMSE:", fold_rmses[3])
+print("Fold 5 RMSE:", fold_rmses[4])
+
 cv_rmse = -cv_scores.mean()
 print("Cross-Validation RMSE:", cv_rmse)
 
