@@ -135,3 +135,10 @@ new_student = np.array([[80, 82]])
 new_student_scaled = scaler_level2.transform(new_student)
 predicted_mark = my_ai_level2.model.predict(new_student_scaled)
 print("Predicted Physics Final Mark:", predicted_mark[0])
+
+print("--- Error Margin ---")
+y_predictions = my_ai_level2.model.predict(X2_test_scaled)
+errors = y_test - y_predictions
+lower = np.percentile(errors, 2.5)
+upper = np.percentile(errors, 97.5)
+print(f"95% Confidence Interval (Error Margin): ({lower:.2f}, {upper:.2f})")
