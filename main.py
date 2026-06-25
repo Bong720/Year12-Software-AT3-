@@ -128,7 +128,7 @@ nn_model.fit(X2_train_scaled, y_train)
 nn_predictions = nn_model.predict(X2_test_scaled)
 nn_rmse = np.sqrt(mean_squared_error(y_test, nn_predictions))
 print("Level 2 Linear RMSE:", rmse)
-print("Neutral Network RMSE:", nn_rmse)
+print("Neural Network RMSE:", nn_rmse)
 
 print("--- Predict Missing Mark for New Student ---")
 new_student = np.array([[80, 82]])
