@@ -74,7 +74,7 @@ print("Level 2 RMSE:", rmse)
 
 print("--- Running Bias Audit (80% Rule) ---")
 group_a = df_clean[df_clean['Physics'] > 70]
-group_b = df_clean[df_clean['Modern_History'] > 70]
+group_b = df_clean[df_clean['Maths_Advanced'] > 70]
 pass_rate_a = (group_a['Software_Engineering_Final'] >= 50).mean()
 print("Group A Pass Rate:", pass_rate_a)
 pass_rate_b = (group_b['Software_Engineering_Final'] >= 50).mean()
